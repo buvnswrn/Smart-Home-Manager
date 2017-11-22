@@ -6,10 +6,10 @@
   <meta charset="UTF-8">
 
   <title>Smart Home Manager - Log-in</title>
-
- 
+  
 
     <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+   
 
 </head>
 
@@ -18,11 +18,15 @@
   <div class="login-card">
     <h1 id="title">Smart Home Manager</h1><br>
     <h1>Sign-Up</h1><br>
-  <form>
+  <form id="register-form" action="home.htm" method="POST">
     <input type="text" name="user" placeholder="Username">
+    <span id="username-error"></span>
     <input type="password" name="pass" placeholder="Password">
-    <input type="password" name="pass" placeholder="Retype Password">
+    <span id="pass-error"></span>
+    <input type="password" name="confirm_pass" placeholder="Retype Password">
+    <span id="confirm-pass-error"></span>
     <input type="text" name="mail" placeholder="E-Mail">
+    <span id="email-error"></span>
     <input type="submit" name="login" class="login login-submit" value="Sign-Up">
   </form>
 
@@ -34,7 +38,116 @@
 
 
  
+  <script>
+    /*
+      ** Regex for various fields **
+    */
 
+    // Alphanumeric, underscores and hyphen 3 to 16 chars long
+    var re_username = new RegExp(/^[\w_\-]{3,16}$/); 
+    // All characters except quotes greater than 8 characters
+    var re_password = new RegExp(/^[^'"]{8,}$/);
+    // Email validation
+    var re_email = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+
+    /*
+      ** Selectors for various fields **
+    */
+    var usernameTxt = document.getElementsByName('user')[0];
+    var passwordTxt = document.getElementsByName('pass')[0];
+    var confirmPasswordTxt = document.getElementsByName('confirm_pass')[0];
+    var emailTxt = document.getElementsByName('mail')[0];
+    
+
+    /*
+      ** Error elements for various fields **
+    */
+    var usernameErr = document.getElementById('username-error');
+    var passwordErr = document.getElementById('pass-error');
+    var confirmPasswordErr = document.getElementById('confirm-pass-error');
+    var emailErr = document.getElementById('email-error');
+
+
+    /*
+      ** Flags for correctness various fields **
+    */
+    var usernameChk = false;
+    var passwordChk = false;
+    var confirmPasswordChk = false;
+    var emailChk = false;
+
+    /*
+      ** Validation functions **
+    */
+
+    function toggleError(errorInputField, errorMsgField, hasError, errorMsg){
+      if(errorInputField.value.trim().length == 0) {
+        hasError = true;
+        errorMsg = "Required field";
+      }
+      if(hasError) {
+        errorMsgField.classList.add('error-text');
+        errorMsgField.innerText = errorMsg;
+        errorInputField.classList.add('error-field');
+      } else {
+        errorMsgField.innerText = "";
+        errorMsgField.classList.remove('error-text');
+        errorInputField.classList.remove('error-field');
+      }
+    }
+
+    function validateUsername(e) {
+      usernameTxt.value = usernameTxt.value.trim();
+      usernameChk = re_username.test(usernameTxt.value);
+      errorMsg = "Username can contain only alphanumeric, underscores, hyphen and must be 3 to 16 characters long";
+      toggleError(usernameTxt, usernameErr, !usernameChk, errorMsg)
+      
+    }
+    
+    function validatePassword(e) {
+      passwordChk = re_password.test(passwordTxt.value);
+      errorMsg = "Passwords must be at least 8 characters long and must not contain any quotes";
+      toggleError(passwordTxt, passwordErr, !passwordChk, errorMsg)
+
+      if(confirmPasswordTxt.value) {
+        validateConfirmPassword();
+      }
+    }
+    
+    function validateConfirmPassword(e) {
+      confirmPasswordChk = (passwordTxt.value == confirmPasswordTxt.value);
+      errorMsg = "Passwords do not match";
+      toggleError(confirmPasswordTxt, confirmPasswordErr, !confirmPasswordChk, errorMsg);
+    }
+
+    function validateEmail(e) {
+      emailTxt.value = emailTxt.value.trim();
+      emailChk = re_email.test(emailTxt.value);
+      errorMsg = "Invalid Email";
+      toggleError(emailTxt, emailErr, !emailChk, errorMsg);
+    }
+    
+    /*
+      ** Event Listeners **
+    */
+    usernameTxt.addEventListener("blur", validateUsername);
+    passwordTxt.addEventListener("blur", validatePassword);
+    confirmPasswordTxt.addEventListener("blur", validateConfirmPassword);
+    emailTxt.addEventListener("blur", validateEmail);
+      
+    var registerForm = document.getElementById('register-form');
+    registerForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      validateUsername();
+      validatePassword();
+      validateConfirmPassword();
+      validateEmail();
+      if(usernameChk && passwordChk && confirmPasswordChk && emailChk)
+        registerForm.submit();
+      return false;
+        
+    });
+  </script>
 </body>
 
 </html>

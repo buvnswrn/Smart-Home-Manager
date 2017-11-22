@@ -24,7 +24,21 @@ body {
   
   overflow: hidden;
 }
+ .error-text {
+        position: absolute;
+        color:#fff;
+        font-size: 0.7em;
+        background: rgba(223, 62, 62, 0.7);
+        margin-left: 20px;
+        max-width: 300px;
+        padding: 3px;
+        box-shadow: 2px 3px 4px rgba(0,0,0,0.3);
+        border-radius: 3px;
+      }
 
+      .error-field {
+        background: rgb(231, 142, 142) !important;
+      }
 .login-card h1 {
   font-weight: 100;
   text-align: center;

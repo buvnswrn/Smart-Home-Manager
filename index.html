@@ -18,9 +18,11 @@
   <div class="login-card">
     <h1 id="title">Smart Home Manager</h1><br>
     <h1>Log-in</h1><br>
-    <form action="submit.php" method="post">
+    <form id="login-form" action="submit.php" method="post">
       <input type="text" name="user" placeholder="Username">
+      <span id="username-error"></span>
       <input type="password" name="pass" placeholder="Password">
+      <span id="pass-error"></span>
       <input type="submit" name="login" class="login login-submit" value="login">
     </form>
 
@@ -28,11 +30,103 @@
       <a href="register.html">Register</a> • <a href="#">Forgot Password</a>
     </div>
   </div>
+ 
+ 
+ <script>
+  /*
+  ** Regex for various fields **
+*/
+
+// Alphanumeric, underscores and hyphen 3 to 16 chars long
+var re_username = new RegExp(/^[\w_\-]{3,16}$/); 
+// All characters except quotes greater than 8 characters
+var re_password = new RegExp(/^[^'"]{8,}$/);
 
 
 
+/*
+  ** Selectors for various fields **
+*/
+var usernameTxt = document.getElementsByName('user')[0];
+var passwordTxt = document.getElementsByName('pass')[0];
 
 
+
+/*
+  ** Error elements for various fields **
+*/
+var usernameErr = document.getElementById('username-error');
+var passwordErr = document.getElementById('pass-error');
+
+
+
+/*
+  ** Flags for correctness various fields **
+*/
+var usernameChk = false;
+var passwordChk = false;
+
+
+/*
+  ** Validation functions **
+*/
+
+function toggleError(errorInputField, errorMsgField, hasError, errorMsg){
+  if(errorInputField.value.trim().length == 0) {
+    hasError = true;
+    errorMsg = "Required field";
+  }
+  if(hasError) {
+        errorMsgField.classList.add('error-text');
+        errorMsgField.innerText = errorMsg;
+        errorInputField.classList.add('error-field');
+      } else {
+        errorMsgField.innerText = "";
+        errorMsgField.classList.remove('error-text');
+        errorInputField.classList.remove('error-field');
+      }
+}
+
+function validateUsername(e) {
+  usernameTxt.value = usernameTxt.value.trim();
+  usernameChk = re_username.test(usernameTxt.value);
+  errorMsg = "Username can contain only alphanumeric, underscores, hyphen and must be 3 to 16 characters long";
+  toggleError(usernameTxt, usernameErr, !usernameChk, errorMsg)
+  
+}
+
+function validatePassword(e) {
+  passwordChk = re_password.test(passwordTxt.value);
+  errorMsg = "Passwords must be at least 8 characters long and must not contain any quotes";
+  toggleError(passwordTxt, passwordErr, !passwordChk, errorMsg)
+
+  
+}
+
+
+
+/*
+  ** Event Listeners **
+*/
+usernameTxt.addEventListener("blur", validateUsername);
+passwordTxt.addEventListener("blur", validatePassword);
+
+  
+var loginform = document.getElementById('login-form');
+loginform.addEventListener("submit", function(e) {
+  e.preventDefault();
+  validateUsername();
+  validatePassword();
+  
+  if(usernameChk && passwordChk)
+    loginform.submit();
+  return false;
+    
+});
+
+
+
+</script>
 
 </body>
 
