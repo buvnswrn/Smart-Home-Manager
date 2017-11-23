@@ -18,9 +18,9 @@
   <div class="login-card">
     <h1 id="title">Smart Home Manager</h1><br>
     <h1>Log-in</h1><br>
-    <form id="login-form" action="submit.php" method="post">
-      <input type="text" name="user" placeholder="Username">
-      <span id="username-error"></span>
+    <form id="login-form" action="login_mongodb.php" method="post">
+      <input type="text" name="mail" placeholder="Username">
+      <span id="email-error"></span>
       <input type="password" name="pass" placeholder="Password">
       <span id="pass-error"></span>
       <input type="submit" name="login" class="login login-submit" value="login">
@@ -41,15 +41,15 @@
 var re_username = new RegExp(/^[\w_\-]{3,16}$/); 
 // All characters except quotes greater than 8 characters
 var re_password = new RegExp(/^[^'"]{8,}$/);
-
+var re_email = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
 
 
 /*
   ** Selectors for various fields **
 */
-var usernameTxt = document.getElementsByName('user')[0];
-var passwordTxt = document.getElementsByName('pass')[0];
 
+var passwordTxt = document.getElementsByName('pass')[0];
+var emailTxt = document.getElementsByName('mail')[0];
 
 
 /*
@@ -57,7 +57,7 @@ var passwordTxt = document.getElementsByName('pass')[0];
 */
 var usernameErr = document.getElementById('username-error');
 var passwordErr = document.getElementById('pass-error');
-
+var emailErr = document.getElementById('email-error');
 
 
 /*
@@ -65,7 +65,7 @@ var passwordErr = document.getElementById('pass-error');
 */
 var usernameChk = false;
 var passwordChk = false;
-
+var emailChk = false;
 
 /*
   ** Validation functions **
@@ -87,13 +87,6 @@ function toggleError(errorInputField, errorMsgField, hasError, errorMsg){
       }
 }
 
-function validateUsername(e) {
-  usernameTxt.value = usernameTxt.value.trim();
-  usernameChk = re_username.test(usernameTxt.value);
-  errorMsg = "Username can contain only alphanumeric, underscores, hyphen and must be 3 to 16 characters long";
-  toggleError(usernameTxt, usernameErr, !usernameChk, errorMsg)
-  
-}
 
 function validatePassword(e) {
   passwordChk = re_password.test(passwordTxt.value);
@@ -102,23 +95,27 @@ function validatePassword(e) {
 
   
 }
-
+function validateEmail(e) {
+      emailTxt.value = emailTxt.value.trim();
+      emailChk = re_email.test(emailTxt.value);
+      errorMsg = "Invalid Email";
+      toggleError(emailTxt, emailErr, !emailChk, errorMsg);
+    }
 
 
 /*
   ** Event Listeners **
 */
-usernameTxt.addEventListener("blur", validateUsername);
-passwordTxt.addEventListener("blur", validatePassword);
 
+passwordTxt.addEventListener("blur", validatePassword);
+emailTxt.addEventListener("blur", validateEmail);
   
 var loginform = document.getElementById('login-form');
 loginform.addEventListener("submit", function(e) {
   e.preventDefault();
-  validateUsername();
   validatePassword();
-  
-  if(usernameChk && passwordChk)
+  validateEmail();
+  if(emailChk && passwordChk)
     loginform.submit();
   return false;
     
