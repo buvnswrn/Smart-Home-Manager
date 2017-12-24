@@ -1,3 +1,4 @@
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -125,8 +126,8 @@ input:checked + .slider:before {
  box-shadow: 1px 2px 5px 1px #888888;
 }
 #header {
-    background-color: #62EFD7;
-    color:blue;
+    background-color: skyblue;
+    color:initial;
     box-shadow: 1px 2px 2px 1px #888888;
     padding: 2px 2px;
     margin-bottom: 10px;
@@ -140,10 +141,57 @@ input:checked + .slider:before {
     margin: 20px;
 }
 #content {
+    padding:3px;
     margin: 15px;
     box-shadow: 1px 1px 1px 1px #888888;
     border-bottom: solid 1px;
     box-sizing:border-box;
+}
+#content:hover{
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -moz-transform: rotateX(2deg);
+  -webkit-transform: rotateX(2deg);
+  transform: rotateX(2deg);
+  -moz-transform-origin: 50% 0;
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  box-shadow: 12px 12px 12px -3px gray;
+
+}
+#delete{
+  text-align: center;
+  color: red;
+  display: none;
+  cursor: pointer;
+}
+#delete:hover{
+  background-color: #BABDAC;
+  
+}
+#content:hover #edit{display:block;} 
+#content:hover #delete{display:block;}
+#update{
+  display:none;
+}
+#edit {
+  position:absolute;
+  display:none;
+  width: 30px;
+  background-color: gray;
+  height: 14px;
+  font-size: 12px;
+  right: 50px;
+  float: right;
+  margin: 2px;
+  padding: 1px;
+  cursor: pointer;
+}
+#edit:hover{
+  background-color: skyblue;
+  color: white;
+  z-index:1;
 }
 #name {
     margin: 10px;
@@ -151,6 +199,9 @@ input:checked + .slider:before {
     height: 50px;
     /* clear: right; */
     /* clear: right; */
+}
+#obj-id{
+  display:none;
 }
 #image {
   position: absolute;
@@ -162,8 +213,12 @@ input:checked + .slider:before {
   
 }
 #nameimage {
+  background-color: skyblue;
+  width: 500px;
+  /* margin: 20px; */
+  /* padding: 2px; */
   display: grid;
-  margin: 5px;
+  /* margin: 5px; */
   padding:1%;
 }
 #req {
@@ -173,6 +228,8 @@ input:checked + .slider:before {
 img {
     width:150px;
     height:150px;
+    margin:2px;
+    padding:5px;
 }
 #item{
   display: inline-grid;

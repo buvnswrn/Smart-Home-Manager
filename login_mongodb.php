@@ -20,7 +20,7 @@ $query = array(
 $details=$users->findOne($query);
 // print_r($details);
 if($details){
-header('Location:req.html');
+header('Location:req.php');
 }
 else{
     echo 'fucked';
