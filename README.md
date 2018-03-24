@@ -53,21 +53,21 @@ The system collects the information about the required item used by the family m
    **API:**    Pushbullet, Slack <br/>
 
 ## User interfaces
-Login Screen:
-![image](https://user-images.githubusercontent.com/20739181/37861000-ca6e23e8-2f56-11e8-9fa9-9d07107f46e0.png)
-Sign Up Screen:
-![image](https://user-images.githubusercontent.com/20739181/37861151-9cfa3bf6-2f59-11e8-888a-420a481d8e81.png)
-Requirements Screen:
-![image](https://user-images.githubusercontent.com/20739181/37861152-9f6f3846-2f59-11e8-8bfa-50528f33da66.png)
-Requirements Screen (Edit Option):
-![image](https://user-images.githubusercontent.com/20739181/37861154-b10faf72-2f59-11e8-9ca8-869ed840f79a.png)
-Adding Person:
-![image](https://user-images.githubusercontent.com/20739181/37861175-1f5b5620-2f5a-11e8-8085-8b3c6f23748f.png)
-Modifying A Person:
-![image](https://user-images.githubusercontent.com/20739181/37861176-219eb18e-2f5a-11e8-92c0-edf7927037b4.png)
-Slack Bot (User Responding "Yes"):
-![image](https://user-images.githubusercontent.com/20739181/37861177-26cf607c-2f5a-11e8-9556-210fd989bc4b.png)
-Slack Bot (User Responding "No"):
-![image](https://user-images.githubusercontent.com/20739181/37861182-2b7895c6-2f5a-11e8-8ea5-5fc7e817ad07.png)
-Pushbullet (User Responding "Yes"):
-Pushbullet (User Responding "No"):
+Login Screen: <br/><br/>
+![image](https://user-images.githubusercontent.com/20739181/37861000-ca6e23e8-2f56-11e8-9fa9-9d07107f46e0.png)<br/><br/>
+Sign Up Screen:<br/><br/>
+![image](https://user-images.githubusercontent.com/20739181/37861151-9cfa3bf6-2f59-11e8-888a-420a481d8e81.png)<br/><br/>
+Requirements Screen:<br/><br/>
+![image](https://user-images.githubusercontent.com/20739181/37861152-9f6f3846-2f59-11e8-8bfa-50528f33da66.png)<br/><br/>
+Requirements Screen (Edit Option):<br/>
+![image](https://user-images.githubusercontent.com/20739181/37861154-b10faf72-2f59-11e8-9ca8-869ed840f79a.png)<br/><br/>
+Adding Person:<br/><br/>
+![image](https://user-images.githubusercontent.com/20739181/37861175-1f5b5620-2f5a-11e8-8085-8b3c6f23748f.png)<br/><br/>
+Modifying A Person:<br/><br/>
+![image](https://user-images.githubusercontent.com/20739181/37861176-219eb18e-2f5a-11e8-92c0-edf7927037b4.png)<br/><br/>
+Slack Bot (User Responding "Yes"):<br/><br/>
+![image](https://user-images.githubusercontent.com/20739181/37861177-26cf607c-2f5a-11e8-9556-210fd989bc4b.png)<br/><br/>
+Slack Bot (User Responding "No"):<br/><br/>
+![image](https://user-images.githubusercontent.com/20739181/37861182-2b7895c6-2f5a-11e8-8ea5-5fc7e817ad07.png)<br/><br/>
+Pushbullet Notification:<br/><br/>
+![image](https://user-images.githubusercontent.com/20739181/37861253-fa5d05ec-2f5b-11e8-8a55-085e4dc54a73.png)<br/><br/>
