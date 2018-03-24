@@ -6,9 +6,9 @@ from slackclient import SlackClient
 import Notify
 import imagebot as imgbot
 import db
-slack_client =SlackClient('xoxb-305601000482-EagaR9CZuvKS2IxdMvteXxUW')
+slack_client =SlackClient('YOUR_SLACK_API')
 bot_id =None
-botchannel='C8ZHL73RS'
+botchannel='YOUR_BOT_CHANNEL_NO'
 t_end = time.time() + 60 * 5
 response_text=None
 RTM_DELAY=1
