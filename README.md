@@ -59,7 +59,7 @@ Sign Up Screen:<br/><br/>
 ![image](https://user-images.githubusercontent.com/20739181/37861151-9cfa3bf6-2f59-11e8-888a-420a481d8e81.png)<br/><br/>
 Requirements Screen:<br/><br/>
 ![image](https://user-images.githubusercontent.com/20739181/37861152-9f6f3846-2f59-11e8-8bfa-50528f33da66.png)<br/><br/>
-Requirements Screen (Edit Option):<br/>
+Requirements Screen (Edit Option):<br/><br/>
 ![image](https://user-images.githubusercontent.com/20739181/37861154-b10faf72-2f59-11e8-9ca8-869ed840f79a.png)<br/><br/>
 Adding Person:<br/><br/>
 ![image](https://user-images.githubusercontent.com/20739181/37861175-1f5b5620-2f5a-11e8-8085-8b3c6f23748f.png)<br/><br/>
